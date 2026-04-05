@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yastrix - Links</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(90deg, #3a3a3a 0%, #5a5a5a 50%, #3a3a3a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        /* ANIMAÇÃO PISCANTE */
+        @keyframes pulso {
+            0% { box-shadow: 0 8px 25px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.2); }
+            50% { box-shadow: 0 0 25px #fff, 0 0 45px rgba(255,255,255,0.6); border-color: #fff; }
+            100% { box-shadow: 0 8px 25px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.2); }
+        }
+        .piscando {
+            animation: pulso 1.5s infinite ease-in-out;
+        }
+
+        /* HEADER */
+        .header {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(rgba(58,58,58,0.7), rgba(58,58,58,0.5)), 
+                        url('https://i.postimg.cc/VLyhQc4c/Screenshot-2026-03-31-15-21-49-942-com-instagram-android-edit.jpg');
+            background-size: cover;
+            background-position: center 15%;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            margin-bottom: 40px;
+        }
+        
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.8);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .name {
+            font-size: 2.5em;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+        }
+        
+        /* CORES DAS PLATAFORMAS */
+        .bg-privacy { background-color: #ffffff !important; color: #000 !important; }
+        .bg-instagram { background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D) !important; color: white !important; }
+        .bg-prive { background-color: #380106 !important; color: white !important; } /* Laranja Câmera Privê */
+        .bg-amazon { background-color: #FF9900 !important; color: #000 !important; }
+        .bg-twitter { background-color: #1DA1F2 !important; color: white !important; }
+        .bg-tiktok { background-color: #000000 !important; color: white !important; }
+        .bg-telegram { background-color: #0088CC !important; color: white !important; }
+
+        /* TOP LOGOS */
+        .top-logos {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .logo-item {
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logo-item:hover { transform: translateY(-5px); }
+        
+        .logo-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 15px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .logo-icon img { width: 30px; height: 30px; object-fit: contain; }
+        
+        .logo-name {
+            font-size: 0.9em;
+            font-weight: 600;
+            padding: 6px 14px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* GALERIA - GRID 3-3-1 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 30px 50px;
+        }
+        
+        .photo-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: relative;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .photo-card:hover { transform: translateY(-10px); }
+        
+        .photo-container { position: relative; width: 100%; height: 320px; overflow: hidden; }
+        .photo-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+        .photo-card:hover .photo-container img { transform: scale(1.05); }
+        
+        .photo-logo {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .photo-logo img { width: 25px; height: 25px; }
+        .photo-logo i { font-size: 1.2em; }
+        
+        .platform-name {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 18px;
+            text-align: center;
+            font-weight: 600;
+            background: rgba(40, 40, 40, 0.8);
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .gallery .photo-card:nth-child(7) { grid-column: 2; }
+        
+        @media (max-width: 768px) {
+            .gallery { grid-template-columns: 1fr; }
+            .gallery .photo-card:nth-child(7) { grid-column: auto; }
+            .header { height: 150px; padding: 0 20px; }
+            .top-logos { gap: 15px; }
+            .logo-icon { width: 55px; height: 55px; font-size: 1.5em; }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div class="profile-container">
+            <img src="https://i.postimg.cc/NFKdhd2T/Screenshot-2026-03-31-15-20-08-897-com-instagram-android-edit.jpg" class="profile-pic">
+            <div class="name">Yastrix</div>
+        </div>
+    </div>
+    
+    <div class="top-logos">
+        <div class="logo-item" onclick="window.open('https://privacy.com.br/Profile/Yastrixx', '_blank')">
+            <div class="logo-icon bg-privacy"><img src="https://i.imgur.com/3eyn7gr.png"></div>
+            <div class="logo-name">Privacy</div>
+        </div>
+        <div class="logo-item" onclick="window.open('LINK_INSTAGRAM', '_blank')">
+            <div class="logo-icon bg-instagram"><i class="fab fa-instagram"></i></div>
+            <div class="logo-name">Instagram</div>
+        </div>
+        <div class="logo-item" onclick="window.open('https://models.cameraprive.com/br/yastrixx', '_blank')">
+            <div class="logo-icon bg-prive"><img src="https://i.postimg.cc/Kz15VHX1/20260404-203349.jpg"></i></div>
+            <div class="logo-name">CâmPriv</div>
+        </div>
+        <div class="logo-item" onclick="window.open('https://www.amazon.com.br/hz/wishlist/ls/4HFZ6RBRBKHT?ref_=list_d_wl_ys_list_1&filter=unpurchased&sort=date-added&viewType=list', '_blank')">
+            <div class="logo-icon bg-amazon"><i class="fab fa-amazon"></i></div>
+            <div class="logo-name">Wishlist</div>
+        </div>
+        <div class="logo-item" onclick="window.open('https://x.com/oficialyastrixx', '_blank')">
+            <div class="logo-icon bg-twitter"><i class="fab fa-twitter"></i></div>
+            <div class="logo-name">Twitter</div>
+        </div>
+        <div class="logo-item" onclick="window.open('https://www.tiktok.com/@yaxtrix?_r=1&_t=ZS-959aNnbM13M', '_blank')">
+            <div class="logo-icon bg-tiktok"><i class="fab fa-tiktok"></i></div>
+            <div class="logo-name">TikTok</div>
+        </div>
+        <div class="logo-item" onclick="window.open('https://t.me/previasdayastrix', '_blank')">
+            <div class="logo-icon bg-telegram"><i class="fab fa-telegram"></i></div>
+            <div class="logo-name">Telegram Free</div>
+        </div>
+    </div>
+
+    <div class="gallery">
+        <div class="photo-card piscando">
+            <div class="photo-container">
+                <a href="https://privacy.com.br/Profile/Yastrixx" target="_blank"><img src="https://i.postimg.cc/ZR5RHGd9/IMG_20260403_184554_856.jpg"></a>
+                <div class="photo-logo bg-privacy"><img src="https://i.imgur.com/3eyn7gr.png"></div>
+                <div class="platform-name">Assine meu Privacy</div>
+            </div>
+        </div>
+        
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="LINK_INSTAGRAM" target="_blank"><img src="https://i.postimg.cc/zBGB7sgW/IMG_20260403_184621_359.jpg"></a>
+                <div class="photo-logo bg-instagram"><i class="fab fa-instagram"></i></div>
+                <div class="platform-name">Instagram</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://models.cameraprive.com/br/yastrixx" target="_blank"><img src="https://i.postimg.cc/4dxdPD9c/IMG_20260403_184606_261.jpg"></a>
+                <div class="photo-logo bg-prive"><img src="https://i.postimg.cc/Kz15VHX1/20260404-203349.jpg"></i></div>
+                <div class="platform-name">Câmera Privê</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.amazon.com.br/hz/wishlist/ls/4HFZ6RBRBKHT?ref_=list_d_wl_ys_list_1&filter=unpurchased&sort=date-added&viewType=list" target="_blank"><img src="https://i.postimg.cc/85z5426f/IMG_20260403_184608_357.jpg"></a>
+                <div class="photo-logo bg-amazon"><i class="fab fa-amazon"></i></div>
+                <div class="platform-name">Lista de Desejos</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://x.com/oficialyastrixx" target="_blank"><img src="https://i.postimg.cc/NMjMD3H9/IMG_20260403_184752_045.jpg"></a>
+                <div class="photo-logo bg-twitter"><i class="fab fa-twitter"></i></div>
+                <div class="platform-name">Twitter / X</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://www.tiktok.com/@yaxtrix?_r=1&_t=ZS-959aNnbM13M" target="_blank"><img src="https://i.postimg.cc/qRvRwP32/IMG_20260403_184756_960.jpg"></a>
+                <div class="photo-logo bg-tiktok"><i class="fab fa-tiktok"></i></div>
+                <div class="platform-name">TikTok</div>
+            </div>
+        </div>
+
+        <div class="photo-card">
+            <div class="photo-container">
+                <a href="https://t.me/previasdayastrix" target="_blank"><img src="https://i.postimg.cc/rmwmjBrS/IMG_20260403_184758_760.jpg"></a>
+                <div class="photo-logo bg-telegram"><i class="fab fa-telegram"></i></div>
+                <div class="platform-name">Telegram Free</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
